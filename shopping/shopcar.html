@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+     <link rel="stylesheet" href="css/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    
+    <script src="js/jquery-2.2.2.js"></script>
+   	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/swiper-3.3.1.jquery.min.js"></script>
+    <script src="js/swiper.animate1.0.2.min.js"></script>
+    <style type="text/css">
+    	#gooddetail img{
+    		width:70px;
+    		height:70px;
+    		
+    		
+    		
+    	}
+    
+    	#gooddetail li{
+    		list-style: none;
+    	}
+        #goodname{
+        	margin-left:100px;
+        	margin-top:-70px;
+        }
+    	p{
+    		margin-left:100px;
+    		margin-top:10px;
+    		line-height:5px;
+    		font-size:10px;
+    	}
+    	.del{
+    		margin-top:-25px;
+    		float:right;
+    		background-color: red;
+    	
+               		
+    	}
+    	#jiesuan{
+    		width:50px;
+    		
+    		margin-left:280px;
+    		margin-top:-30px;
+    		text-shadow:none;
+    		background-color: red;
+    	}
+    	</style>
+	</head>
+	<body>
+		<div data-type="page">
+			<div data-role="header">
+				<a href="index.html" rel="external">返回</a>
+				<h2>购物车</h2>
+			</div>
+			<div data-role="content">
+				<div id="gooddetail"> </div>
+			
+			</div>
+			
+			<div data-role="footer" data-position="fixed">
+				<input type="checkbox" name="allChecked" id="allChecked" onclick="DoCheck()" value=""/><p>全选/取消</p>
+				<a href="#" data-role="button" id="jiesuan" >结算</a>
+				<div data-role="navbar">
+				<ul>
+					
+			    <li><a href="index.html" rel="external" data-icon="home" data-iconpos="top">首页</a></li>
+			    <li><a href="#"  data-icon="search" data-iconpos="top">导航</a></li>
+			    <li><a href="#" data-role="button" data-icon="star" data-iconpos="top">会员</a></li>
+			    <li><a href="shopcar.html" rel="external" data-role="button" data-icon="grid" data-iconpos="top">购物车</a></li>
+			    <li><a href="set.html" rel="external" data-role="button" data-icon="info" data-iconpos="top">设置</a></li>
+			    
+			</ul>
+			</div>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/JavaScript">
+		var user=localStorage.getItem("h");
+//		console.log(user);
+		$.ajax({
+			type:'get',
+			url:'http://datainfo.duapp.com/shopdata/getCar.php',
+			dataType:'jsonp',
+			data:{
+				userID:user
+			},
+			success:function(data){
+				console.log(data);
+			for(var i=0;i<5;i++){
+				$('#gooddetail').html($('#gooddetail').html()+'<li><input type="checkbox" name="choose"/><img src='+data[i].goodsListImg+'><div id="goodname">'+data[i].goodsName+'</div><p id="price">￥'+data[i].price+'</p><p id="number">数量：'+data[i].number+'</p><button class="del" goodsid='+data[i].goodsID+'>删除</button></li>');
+			
+			
+			
+				$("button").on("click",function(){
+				var goodsid=this.getAttribute("goodsid");
+	
+				$.ajax({
+					type:'get',
+					url:'http://datainfo.duapp.com/shopdata/updatecar.php',
+					data:{
+						userID:user,
+						goodsID:goodsid,
+						number:0,
+					},
+					dataType:'json',
+					success:function(){
+						window.location.href="shopcar.html";
+					}
+					
+				})
+			
+		    })
+			}
+			
+	}	
+})
+	</script>
+	
+	<script type="text/javascript">
+		function DoCheck()
+		{
+		var ch=document.getElementsByName("choose");
+		if(document.getElementsByName("allChecked")[0].checked==true)
+		{
+		for(var i=0;i<ch.length;i++)
+		{
+		ch[i].checked=true;
+		}
+		}else{
+		for(var i=0;i<ch.length;i++)
+		{
+		ch[i].checked=false;
+		}
+		}
+		}
+
+		</script>
+				
+		
+		
+
+
+
+</html>

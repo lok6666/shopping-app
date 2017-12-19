@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+
+    <script src="js/jquery-2.2.2.js"></script>
+    <script src="js/jquery.mobile-1.4.5.js"></script>
+    <script src="swiper-3.4.2.min.js"></script>
+    <style type="text/css">
+    	li img{
+    		width:70px;
+    		height:70px;
+    		border-radius: 20px;
+    		;
+    	}
+    	
+    </style>
+	</head>
+	<body>
+		<div data-role="page">
+			<div data-role="panel" id="mypanel"data-display="push">
+			<ul data-role="listview">
+				<li>
+					<img  src="images/1.jpg">贝贝970304</a>
+					<p>会员名:贝贝970304</p>
+				</li>
+				<li>我的收货地址</li>
+			
+		
+				<li>账户与安全</li>
+				<li>地区设置</li>
+				<li>音效与通知</li>
+				<li>隐私</li>
+				<li>通用</li>
+			</ul>
+			
+			
+			<a href="login.html" data-role="button" id="quitlogin" data-rel="close" rel="external"style="margin-bottom: 20px;">退出登录</a>
+		</div>
+			<div data-role="header">
+				<a href="#mypanel" data-role="button">设置</a>
+				<h2>淘宝</h2>
+			
+			</div>
+			<div data-role="content">
+								<ul data-role="listview">
+					<li><a href="#">
+						<img src="images/1.jpg">
+						<h2 >贝贝970304</h2>
+						<p style="float:right;">淘气值768</p>
+						<a></a>
+					</li>
+				
+
+					<li>我的订单 <p style="float:right">查看更多订单></p></li>
+					
+				</ul>	
+				<br >/>
+                <ul data-role="listview">
+                <li><a href="#"><img src="images/user.png" class="ui-li-icon" />管理收货地址</a></li>
+                <li><a href="#"><img src="images/user_female.png" class="ui-li-icon" />账户与安全</a></li>
+                <li><a href="#"><img src="images/user_gray.png" class="ui-li-icon" />音效与通知</a></li>
+                <li><a href="#"><img src="images/user_green.png" class="ui-li-icon" />通用</a></li>
+           
+        
+				</ul>
+				
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+				<ul >
+					
+			    <li><a href="index.html" rel="external" data-icon="home" data-iconpos="top">首页</a></li>
+			    <li><a href="#"  data-icon="search" data-iconpos="top">导航</a></li>
+			    <li><a href="#" data-role="button" data-icon="star" data-iconpos="top">会员</a></li>
+			    <li><a href="shopcar.html" rel="external" data-role="button" data-icon="grid" data-iconpos="top">购物车</a></li>
+			    <li><a href="#" data-role="button" data-icon="info" data-iconpos="top">设置</a></li>
+			    
+			</ul>
+			</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		$("#quitlogin").on("click",function(){
+			
+			localStorage.clear();
+		})
+	</script>
+</html>
